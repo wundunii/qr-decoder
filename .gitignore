@@ -1,0 +1,16 @@
+build/
+out/
+bin/
+
+.vscode/
+.vs/
+*.user
+
+*.o
+*.obj
+*.exe
+*.dll
+*.dylib
+*.so
+
+QR-decoder
