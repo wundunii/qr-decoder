@@ -11,5 +11,5 @@ cmake --build build
 ```
 ## Usage
 ```shell
-./build/QR-decoder <path_to_image>
+./build/qr-decoder <path_to_image>
 ```
