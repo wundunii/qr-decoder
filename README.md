@@ -1,2 +1,15 @@
-# qr-scanner
-A VERY simple QR-Scanner that reads QR-codes from image files
+# QR Decoder
+- A very simple, standalone QR decoder for my personal use. The only thing it can do is read QR-codes from images.
+- Made using [ZXing-cpp](https://github.com/zxing-cpp/zxing-cpp) and [stb_image](https://github.com/nothings/stb/blob/master/stb_image.h).
+## Requirements
+- CMake Version 3.16+
+- C++20 compatible compiler
+## Build Instructions
+```shell
+cmake -B build
+cmake --build build
+```
+## Usage
+```shell
+./build/QR-decoder <path_to_image>
+```
