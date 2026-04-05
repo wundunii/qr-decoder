@@ -28,11 +28,7 @@ int main(int argc, char* argv[]) {
     return 2;
   }
 
- /* Test for stbi_load()
   std::cout << "Image successfully loaded.\n"
-            << "Dimensions: " << width << "x" << height << "\n"
-            << "Original Channels: " << in_channels << std::endl;
-*/
 
   try {
     //Create ImageView (throw if dimensions are invalid)
