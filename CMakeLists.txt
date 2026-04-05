@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(QR-decoder CXX)
+project(qr-decoder CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -18,8 +18,8 @@ set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 
 FetchContent_MakeAvailable(zxing-cpp)
 
-add_executable(QR-decoder src/main.cpp)
+add_executable(qr-decoder src/main.cpp)
 
-target_include_directories(QR-decoder PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/libs)
+target_include_directories(qr-decoder PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/libs)
 
-target_link_libraries(QR-decoder PRIVATE ZXing::ZXing)
+target_link_libraries(qr-decoder PRIVATE ZXing::ZXing)
