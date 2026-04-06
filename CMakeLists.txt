@@ -4,19 +4,24 @@ project(qr-decoder CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-include(FetchContent)
+find_package(zxing-cpp CONFIG QUIET)
 
-FetchContent_Declare(
-  zxing-cpp
-  GIT_REPOSITORY  https://github.com/zxing-cpp/zxing-cpp.git
-  GIT_TAG 8dd1cf5c4fd6fb6211bb96713db926ac6f2cf825 #VERSION 3.0.2
-)
+if(NOT zxing-cpp_FOUND)
+    include(FetchContent)
+    
+    FetchContent_Declare(
+        zxing-cpp
+        URL https://github.com/zxing-cpp/zxing-cpp/archive/refs/tags/v2.2.1.zip
+        URL_HASH sha256:9df8ffdd9330836714440b6f9c5bab3681a918d84aac6c0bcbab00bda86bc228
+    )
+    
+    FetchContent_MakeAvailable(zxing-cpp)
+endif()
 
 set(ZXING_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
-
-FetchContent_MakeAvailable(zxing-cpp)
 
 add_executable(qr-decoder src/main.cpp)
 
