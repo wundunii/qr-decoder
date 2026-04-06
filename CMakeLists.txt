@@ -13,7 +13,7 @@ if(NOT zxing-cpp_FOUND)
     
     FetchContent_Declare(
         zxing-cpp
-        URL https://github.com/zxing-cpp/zxing-cpp/archive/refs/tags/v2.2.1.zip
+        URL https://github.com/zxing-cpp/zxing-cpp/releases/download/v3.0.2/zxing-cpp-3.0.2.zip
         URL_HASH SHA256=9df8ffdd9330836714440b6f9c5bab3681a918d84aac6c0bcbab00bda86bc228
     )
     
