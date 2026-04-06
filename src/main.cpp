@@ -1,7 +1,7 @@
 #include <iostream>
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
-#include <ZXing/ReadBarcode.h>
+#include <ReadBarcode.h>
 
 int main(int argc, char* argv[]) {
   std::cout << "Initializing QR Decoder..." << std::endl;
@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
     return 2;
   }
 
-  std::cout << "Image successfully loaded.\n"
+  std::cout << "Image successfully loaded.\n";
 
   try {
     //Create ImageView (throw if dimensions are invalid)
