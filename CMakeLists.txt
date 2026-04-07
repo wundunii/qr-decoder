@@ -16,12 +16,15 @@ if(NOT zxing-cpp_FOUND)
         URL https://github.com/zxing-cpp/zxing-cpp/releases/download/v3.0.2/zxing-cpp-3.0.2.zip
         URL_HASH SHA256=9df8ffdd9330836714440b6f9c5bab3681a918d84aac6c0bcbab00bda86bc228
     )
-    
+
+    set(ZXING_EXAMPLES OFF CACHE BOOL "" FORCE)
+    set(ZXING_WRITERS OFF CACHE STRING "" FORCE)
+    set(ZXING_C_API OFF CACHE BOOL "" FORCE)
+    set(ZXING_UNIT_TESTS OFF CACHE BOOL "" FORCE)
+    set(ZXING_BLACKBOX_TESTS OFF CACHE BOOL "" FORCE)
+
     FetchContent_MakeAvailable(zxing-cpp)
 endif()
-
-set(ZXING_EXAMPLES OFF CACHE BOOL "" FORCE)
-set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 
 add_executable(qr-decoder src/main.cpp)
 
