@@ -1,33 +1,27 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.28)
 
-project(qr-decoder CXX)
+project(qr-decoder LANGUAGES C CXX)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(zxing-cpp CONFIG QUIET)
+include(FetchContent)
 
-if(NOT zxing-cpp_FOUND)
-    include(FetchContent)
-    
-    FetchContent_Declare(
-        zxing-cpp
-        URL https://github.com/zxing-cpp/zxing-cpp/releases/download/v3.0.2/zxing-cpp-3.0.2.zip
-        URL_HASH SHA256=9df8ffdd9330836714440b6f9c5bab3681a918d84aac6c0bcbab00bda86bc228
-    )
+FetchContent_Populate(
+  quirc
+  URL https://github.com/dlbeer/quirc/archive/refs/heads/master.zip
+  SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/quirc
+)
 
-    set(ZXING_EXAMPLES OFF CACHE BOOL "" FORCE)
-    set(ZXING_WRITERS OFF CACHE STRING "" FORCE)
-    set(ZXING_C_API OFF CACHE BOOL "" FORCE)
-    set(ZXING_UNIT_TESTS OFF CACHE BOOL "" FORCE)
-    set(ZXING_BLACKBOX_TESTS OFF CACHE BOOL "" FORCE)
+set(QUIRC_SOURCES
+  ${CMAKE_CURRENT_BINARY_DIR}/quirc/lib/quirc.c
+  ${CMAKE_CURRENT_BINARY_DIR}/quirc/lib/decode.c
+  ${CMAKE_CURRENT_BINARY_DIR}/quirc/lib/identify.c
+  ${CMAKE_CURRENT_BINARY_DIR}/quirc/lib/version_db.c
+)
 
-    FetchContent_MakeAvailable(zxing-cpp)
-endif()
+add_executable(qr-decoder src/main.cpp ${QUIRC_SOURCES})
 
-add_executable(qr-decoder src/main.cpp)
-
+target_include_directories(qr-decoder PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/quirc/lib)
 target_include_directories(qr-decoder PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/libs)
-
-target_link_libraries(qr-decoder PRIVATE ZXing::ZXing)
