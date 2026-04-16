@@ -7,7 +7,11 @@
 - Drag and drop image onto the file.
 - Result will be showed and also copied to your clipboard automatically.
 ### Linux:
-- Download qr-decoder-linux in [Releases](https://github.com/wundunii/qr-decoder/releases).
+- Download qr-decoder-linux.tar.gz in [Releases](https://github.com/wundunii/qr-decoder/releases).
+- Extract:
+```
+tar -xf qr-decoder-linux.tar.gz
+```
 - Run via terminal:
 ```
 ./qr-decoder-linux <path_to_image>
