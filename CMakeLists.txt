@@ -32,14 +32,13 @@ if(WIN32)
     target_link_libraries(qr-decoder PRIVATE user32 shell32 gdi32)
 
     if(MINGW)
-        target_link_options(qr-decoder PRIVATE 
-            -static-libgcc 
-            -static-libstdc++ 
-            -static
-        )
+        target_link_options(qr-decoder PRIVATE -static-libgcc -static-libstdc++ -static)
     endif()
     
     if(MSVC)
         set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
     endif()
+
+elseif(UNIX AND NOT APPLE)
+  target_link_options(qr-decoder PRIVATE -static-libgcc -static-libstdc++ -static)
 endif()
